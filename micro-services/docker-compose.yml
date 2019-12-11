@@ -1,0 +1,77 @@
+version: '3'
+services:
+  truyum-mysql:
+    image: mysql:8.0.18
+    ports:
+      - "33061:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ../truyumdb2:/var/lib/mysql
+      - ./dbscripts:/docker-entrypoint-initdb.d
+  
+  eureka-discovery-service:
+    image: eureka-discovery-app
+    build: eureka-discovery-service/.
+    ports:
+      - 8761:8761
+  
+      
+  authentication-service:
+    image: authentication-app
+    build: authentication-service/.
+    ports:
+      - 8094:8087
+    depends_on:
+      - truyum-mysql
+      - eureka-discovery-service
+    links:
+      - truyum-mysql
+      - eureka-discovery-service
+      
+  menuitem-service:
+    image: menuitem-app
+    build: menuitem-service/.
+    ports:
+      - 8090:8086
+    depends_on:
+      - truyum-mysql
+      - eureka-discovery-service
+    links:
+      - truyum-mysql
+      - eureka-discovery-service
+   
+  zuul-gateway:
+    image: zuul-gateway-app
+    build: zuul-gateway/.
+    ports:
+      - 8088:8088
+    depends_on:
+      - truyum-mysql
+      - eureka-discovery-service
+      - authentication-service
+      - menuitem-service
+    links:
+      - truyum-mysql
+      - eureka-discovery-service
+      - authentication-service
+      - menuitem-service
+  
+  angular-dist:
+    image: angular-app
+    build: dist/.
+    ports:
+      - 4200:80
+    depends_on:
+      - truyum-mysql
+      - eureka-discovery-service
+      - authentication-service
+      - menuitem-service
+      - zuul-gateway
+    links:
+      - truyum-mysql
+      - eureka-discovery-service
+      - authentication-service
+      - menuitem-service
+      - zuul-gateway
+    

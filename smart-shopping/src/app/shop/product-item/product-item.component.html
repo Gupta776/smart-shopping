@@ -1,0 +1,14 @@
+<app-search-product (newProductList)="searchProduct($event)" (sortEmitter)="sort($event)"></app-search-product>
+<!--  *ngIf="userType!='A'"> -->
+<div class="container">
+    <div class="row bottom-change">
+        <div class="col-lg-3 col-md-4 col-sm-6 my-2" *ngFor='let product of filterProductData'>
+            <app-product-details [item]="product" (deleteEmitter)="deleteProduct($event)"></app-product-details>
+        </div>
+    </div>
+</div>
+<!-- <div class="" *ngIf="userType=='A'">
+    <div *ngFor='let product of filterProductData'>
+        <app-product-details [item]=product></app-product-details>
+    </div>
+</div> -->

@@ -1,0 +1,243 @@
+<section class="container">
+    <div *ngIf="newUserFlag == false">
+        <section class="row justify-content-center">
+            <form class="form-container" [formGroup]='signupForm'>
+                <h4>Signup</h4>
+                <div *ngIf='existFlag == true' class="border border-danger rounded p-2">
+                    <small>
+                        user already exist enter new credentials
+                    </small></div>
+
+
+                <div class="row">
+                    <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+                        <label for="first_name">First Name <span class="text-danger">*</span></label>
+                        <input type="text" [ngClass]="[(signupForm.controls.firstName.dirty || signupForm.controls.firstName.touched) && signupForm.controls.firstName.valid ? 'is-valid' : '',
+                        (signupForm.controls.firstName.dirty || signupForm.controls.firstName.touched) && signupForm.controls.firstName.invalid ? 'is-invalid' : '', 
+                        (signupForm.controls.firstName.valid || signupForm.controls.firstName.invalid) ? 'form-control' : '']" id="first_name" formControlName="firstName" placeholder="Enter First name">
+                        <div *ngIf="(!signupForm.controls.firstName.valid && (signupForm.controls.firstName.dirty || signupForm.controls.firstName.touched))">
+                            <div *ngIf=" signupForm.controls.firstName.errors.required">
+                                <small class='errorMessage'> First Name is required</small>
+                            </div>
+                            <div *ngIf=" signupForm.controls.firstName.errors.maxlength">
+                                <small class='errorMessage'> 15 Character is max</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+                        <label for="last_name">Last Name <span class="text-danger">*</span></label>
+                        <input type="text" [ngClass]="[(signupForm.controls.lastName.dirty || signupForm.controls.lastName.touched) && signupForm.controls.lastName.valid ? 'is-valid' : '',
+                                            (signupForm.controls.lastName.dirty || signupForm.controls.lastName.touched) && signupForm.controls.lastName.invalid ? 'is-invalid' : '', 
+                                            (signupForm.controls.lastName.valid || signupForm.controls.lastName.invalid) ? 'form-control' : '']" id="last_name" formControlName="lastName" placeholder="Enter Last name">
+                        <div *ngIf="(!signupForm.controls.lastName.valid && (signupForm.controls.lastName.dirty || signupForm.controls.lastName.touched))">
+                            <div *ngIf=" signupForm.controls.lastName.errors.required">
+                                <small class='errorMessage'> Last Name is required</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+                        <label for="age"> Age <span class="text-danger">*</span> </label>
+                        <input type="text" [ngClass]="[(signupForm.controls.age.dirty || signupForm.controls.age.touched) && signupForm.controls.age.valid ? 'is-valid' : '',
+                                            (signupForm.controls.age.dirty || signupForm.controls.age.touched) && signupForm.controls.age.invalid ? 'is-invalid' : '', 
+                                            (signupForm.controls.age.valid || signupForm.controls.age.invalid) ? 'form-control' : '']" placeholder="Enter in Number" id="age" formControlName="age" />
+
+
+                        <div *ngIf="!signupForm.controls.age.valid && (signupForm.controls.age.dirty ||
+                            signupForm.controls.age.touched)"  >
+                            <div *ngIf="signupForm.controls.age.errors.required"> <small class='errorMessage'> Age is
+                                    reqiured</small></div>
+                            <div *ngIf="signupForm.controls.age.errors.maxlength || signupForm.controls.age.errors.pattern"> <small class='errorMessage'> Maximum
+                                    age is 99 and should be a number</small></div>
+
+                    </div>
+
+                </div>
+                <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+                    <label for="gender"> Gender <span class="text-danger">*</span></label>
+                    <select name="gender" [ngClass]="[(signupForm.controls.gender.dirty || signupForm.controls.gender.touched) && signupForm.controls.gender.valid ? 'is-valid' : '',
+                                            (signupForm.controls.gender.dirty || signupForm.controls.gender.touched) && signupForm.controls.gender.invalid ? 'is-invalid' : '', 
+                                            (signupForm.controls.gender.valid || signupForm.controls.gender.invalid) ? 'form-control' : '']" id="gender" formControlName="gender">
+                            <option [selected]="true" hidden>Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    <div *ngIf="(!signupForm.controls.gender.valid && (signupForm.controls.gender.dirty || signupForm.controls.gender.touched))">
+                        <div *ngIf=" signupForm.controls.gender.errors.required">
+                            <small class='errorMessage'> gender required</small>
+                        </div>
+                    </div>
+                </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+            <label for="userType"> Create account As Admin or User <span
+                                class="text-danger">*</span></label>
+            <select name="userType" [ngClass]="[(signupForm.controls.userType.dirty || signupForm.controls.userType.touched) && signupForm.controls.userType.valid ? 'is-valid' : '',
+                                            (signupForm.controls.userType.dirty || signupForm.controls.userType.touched) && signupForm.controls.userType.invalid ? 'is-invalid' : '', 
+                                            (signupForm.controls.userType.valid || signupForm.controls.userType.invalid) ? 'form-control' : '']" id="userType" formControlName="userType">
+                            <option [selected]="true" hidden>Select UserType</option>
+                            <option value="A">Admin</option>
+                            <option value="U">User</option>
+                        </select>
+            <div *ngIf="(!signupForm.controls.userType.valid && (signupForm.controls.userType.dirty || signupForm.controls.userType.touched))">
+                <div *ngIf=" signupForm.controls.userType.errors.required">
+                    <small class='errorMessage'> userType required</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+            <label for="contactNumber"> Contact Number <span class="text-danger">*</span></label>
+            <input type="text" [ngClass]="[(signupForm.controls.contactNumber.dirty || signupForm.controls.contactNumber.touched) && signupForm.controls.contactNumber.valid ? 'is-valid' : '',
+                                                (signupForm.controls.contactNumber.dirty || signupForm.controls.contactNumber.touched) && signupForm.controls.contactNumber.invalid ? 'is-invalid' : '', 
+                                                (signupForm.controls.contactNumber.valid || signupForm.controls.contactNumber.invalid) ? 'form-control' : '']" placeholder="Enter Contact Number" id="contactNumber" formControlName="contactNumber" />
+            <div *ngIf="(!signupForm.controls.contactNumber.valid && (signupForm.controls.contactNumber.dirty || signupForm.controls.contactNumber.touched))">
+                <div *ngIf=" signupForm.controls.contactNumber.errors.required">
+                    <small class='errorMessage'> contactNumber is required</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <div class="row">
+        <div class="col-12">
+            <label for="userName">Username <span class="text-danger">*</span></label>
+            <input type="text" [ngClass]="[(signupForm.controls.userName.dirty || signupForm.controls.userName.touched) && signupForm.controls.userName.valid ? 'is-valid' : '',
+                                            (signupForm.controls.userName.dirty || signupForm.controls.userName.touched) && signupForm.controls.userName.invalid ? 'is-invalid' : '', 
+                                            (signupForm.controls.userName.valid || signupForm.controls.userName.invalid) ? 'form-control' : '']" id="userName" formControlName="userName" placeholder="Enter Username">
+            <div *ngIf="(!signupForm.controls.userName.valid && (signupForm.controls.userName.dirty || signupForm.controls.userName.touched))">
+                <div *ngIf=" signupForm.controls.userName.errors.required">
+                    <small class='errorMessage'> User Name is required</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+            <label for="password">Password <span class="text-danger">*</span></label>
+            <input type="password" [ngClass]="[(signupForm.controls.password.dirty || signupForm.controls.password.touched) && signupForm.controls.password.valid ? 'is-valid' : '',
+                                            (signupForm.controls.password.dirty || signupForm.controls.password.touched) && signupForm.controls.password.invalid ? 'is-invalid' : '', 
+                                            (signupForm.controls.password.valid || signupForm.controls.password.invalid) ? 'form-control' : '']" id="password" formControlName="password" placeholder="Enter Password">
+            <div *ngIf="(!signupForm.controls.password.valid && (signupForm.controls.password.dirty || signupForm.controls.password.touched))">
+                <div *ngIf=" signupForm.controls.password.errors.required">
+                    <small class='errorMessage'> Password is required</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+            <label for="confirmPassword">Confirm Password <span class="text-danger">*</span></label>
+            <input type="password" [ngClass]="[(signupForm.controls.confirmPassword.dirty || signupForm.controls.confirmPassword.touched) && signupForm.controls.confirmPassword.valid ? 'is-valid' : '',
+                                            (signupForm.controls.confirmPassword.dirty || signupForm.controls.confirmPassword.touched) && signupForm.controls.confirmPassword.invalid ? 'is-invalid' : '', 
+                                            (signupForm.controls.confirmPassword.valid || signupForm.controls.confirmPassword.invalid) ? 'form-control' : '']" id="confirmPassword" formControlName="confirmPassword" placeholder="Enter Confirm Password"
+                (keyup)='passwordMatch()'>
+            <div *ngIf="(!signupForm.controls.confirmPassword.valid && (signupForm.controls.confirmPassword.dirty || signupForm.controls.confirmPassword.touched))">
+                <div *ngIf=" signupForm.controls.confirmPassword.errors.required">
+                    <small class='errorMessage'>Confirm Password is required</small>
+                </div>
+            </div>
+            <div *ngIf='(signupForm.controls.confirmPassword.valid && (signupForm.controls.confirmPassword.dirty || signupForm.controls.confirmPassword.touched))'>
+                <div *ngIf='passwordFlag == false'>
+                    <small class='errorMessage'> Password is not matching</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <div class="row">
+        <div class="col-12">
+            <label for="question1">1) Select any question for security. <span
+                                class="text-danger">*</span></label>
+            <select name="question1" [ngClass]="[(signupForm.controls.secretQuestion1.dirty || signupForm.controls.secretQuestion1.touched) && signupForm.controls.secretQuestion1.valid ? 'is-valid' : '',
+                                            (signupForm.controls.secretQuestion1.dirty || signupForm.controls.secretQuestion1.touched) && signupForm.controls.secretQuestion1.invalid ? 'is-invalid' : '', 
+                                            (signupForm.controls.secretQuestion1.valid || signupForm.controls.secretQuestion1.invalid) ? 'form-control' : '']" id="question1" formControlName="secretQuestion1">
+                            <option [selected]="true" hidden>Select Question</option>
+                            <option value="What is your favorite book">What is your favorite book ?</option>
+                            <option value="What is your lucky item" selected>What is your lucky item ?</option>
+                            <!-- <option value="What is your favorite movie">What is your favorite movie ?</option>
+                                <option value="What is your birth place">What is your birth place ?</option>
+                                <option value="What is your hobbie">What is your hobbie ?</option> -->
+                        </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <label for="answer1"> Answer for the security question 1. <span
+                                class="text-danger">*</span></label>
+            <input type="text" placeholder="Your unique answer" [ngClass]="[(signupForm.controls.secretAnswer1.dirty || signupForm.controls.secretAnswer1.touched) && signupForm.controls.secretAnswer1.valid ? 'is-valid' : '',
+                                            (signupForm.controls.secretAnswer1.dirty || signupForm.controls.secretAnswer1.touched) && signupForm.controls.secretAnswer1.invalid ? 'is-invalid' : '', 
+                                            (signupForm.controls.secretAnswer1.valid || signupForm.controls.secretAnswer1.invalid) ? 'form-control' : '']" id="answer1" formControlName="secretAnswer1" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <label for="question2">2) Select any question for security. <span
+                                class="text-danger">*</span></label>
+            <select name="question2" [ngClass]="[(signupForm.controls.secretQuestion2.dirty || signupForm.controls.secretQuestion2.touched) && signupForm.controls.secretQuestion2.valid ? 'is-valid' : '',
+                                            (signupForm.controls.secretQuestion2.dirty || signupForm.controls.secretQuestion2.touched) && signupForm.controls.secretQuestion2.invalid ? 'is-invalid' : '', 
+                                            (signupForm.controls.secretQuestion2.valid || signupForm.controls.secretQuestion2.invalid) ? 'form-control' : '']" id="question2" formControlName="secretQuestion2">
+                            <option [selected]="true" hidden>Select Question</option>
+                            <!-- <option value="What is your favorite book" selected>What is your favorite book ?</option>
+                                    <option value="What is your lucky item">What is your lucky item ?</option> -->
+                            <option value="What is your favorite movie">What is your favorite movie ?</option>
+                            <option value="What is your birth place">What is your birth place ?</option>
+                            <!-- <option value="What is your hobbie">What is your hobbie ?</option> -->
+                        </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <label for="answer2"> Answer for the security question 2. <span
+                                class="text-danger">*</span></label>
+            <input type="text" placeholder="Your unique answer" [ngClass]="[(signupForm.controls.secretAnswer2.dirty || signupForm.controls.secretAnswer2.touched) && signupForm.controls.secretAnswer2.valid ? 'is-valid' : '',
+                                            (signupForm.controls.secretAnswer2.dirty || signupForm.controls.secretAnswer2.touched) && signupForm.controls.secretAnswer2.invalid ? 'is-invalid' : '', 
+                                            (signupForm.controls.secretAnswer2.valid || signupForm.controls.secretAnswer2.invalid) ? 'form-control' : '']" id="answer2" formControlName="secretAnswer2" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <label for="question3">3) Select any question for security. <span
+                                class="text-danger">*</span></label>
+            <select name="question3" [ngClass]="[(signupForm.controls.secretQuestion3.dirty || signupForm.controls.secretQuestion3.touched) && signupForm.controls.secretQuestion3.valid ? 'is-valid' : '',
+                                            (signupForm.controls.secretQuestion3.dirty || signupForm.controls.secretQuestion3.touched) && signupForm.controls.secretQuestion3.invalid ? 'is-invalid' : '', 
+                                            (signupForm.controls.secretQuestion3.valid || signupForm.controls.secretQuestion3.invalid) ? 'form-control' : '']" id="question3" formControlName="secretQuestion3">
+                            <option [selected]="true" hidden>Select Question</option>
+                            <!-- <option value="What is your favorite book" >What is your favorite book ?</option>
+                                    <option value="What is your lucky item" >What is your lucky item ?</option>
+                                    <option value="What is your favorite movie">What is your favorite movie ?</option> -->
+                            <option value="What is your birth place" selected>What is your dream ?</option>
+                            <option value="What is your hobbie">What is your hobbie ?</option>
+                        </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <label for="answer3"> Answer for the security question 3.<span
+                                class="text-danger">*</span></label>
+            <input type="text" placeholder="Your unique answer" [ngClass]="[(signupForm.controls.secretAnswer3.dirty || signupForm.controls.secretAnswer3.touched) && signupForm.controls.secretAnswer3.valid ? 'is-valid' : '',
+                                            (signupForm.controls.secretAnswer3.dirty || signupForm.controls.secretAnswer3.touched) && signupForm.controls.secretAnswer3.invalid ? 'is-invalid' : '', 
+                                            (signupForm.controls.secretAnswer3.valid || signupForm.controls.secretAnswer3.invalid) ? 'form-control' : '']" id="answer3" formControlName="secretAnswer3" />
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12 ">
+            <button type="button" (click)='onSubmit()' [disabled]='!signupForm.valid' class="btn btn-signup-color mt-3 text-white">Signup</button>
+        </div>
+    </div>
+    </form>
+    </section>
+    </div>
+    <div *ngIf="newUserFlag == true">
+        <div class="success-display">
+            <p>User is Created successfully</p>
+            <p>Press <a routerLink="/login" routerLinkActive="active-link" class="text-success">Login</a> to enter</p>
+        </div>
+    </div>
+</section>

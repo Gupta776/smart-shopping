@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+
+h4 {
+    font-family: 'Lobster', cursive;
+    font-size: 35px;
+    text-decoration: underline double;
+    text-align: center;
+}
+
+label,
+.navigateLinks {
+    font-family: 'Odibee Sans', cursive;
+    font-weight: 550;
+    font-size: 23px;
+}
+
+.navigateLinks {
+    font-size: 17px;
+}
+
+@media only screen and (max-width:350px) {
+    label {
+        font-size: 19px;
+    }
+    .navigateLinks {
+        font-size: 14px;
+    }
+}

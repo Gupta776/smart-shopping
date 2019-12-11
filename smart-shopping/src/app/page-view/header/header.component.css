@@ -1,0 +1,101 @@
+header {
+    background-color: #ffffff;
+    width: 100%;
+    /* z-index: 1; */
+    border-bottom: 5px solid black;
+}
+
+a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 25px;
+    font-family: 'Lobster', cursive;
+}
+
+a:hover {
+    color: #741caf;
+    text-decoration: underline #741caf;
+}
+
+.name {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 25px;
+    font-family: 'Lobster', cursive;
+}
+
+h2 {
+    font-family: 'Fredericka the Great', cursive;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.logo1 {
+    font-size: 70px;
+    color: rgb(0, 0, 0);
+}
+
+.fourStyle {
+    color: #2fc02f;
+    font-family: 'Lobster', cursive;
+}
+
+h2 {
+    font-weight: 800;
+    font-size: 50px;
+}
+
+i {
+    font-size: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+    h2 {
+        font-weight: 500;
+        font-size: 40px;
+    }
+    .logo1 {
+        font-size: 50px;
+    }
+    a,
+    .name {
+        font-size: 20px;
+    }
+}
+
+
+/* 
+.fourStyle {
+    color: #2fc02f;
+    -webkit-animation: mymove 5s infinite;
+    /* Chrome, Safari, Opera */
+
+
+/* animation: mymove 5s infinite;
+}
+
+.icon-size {
+    font-size: 20px;
+} */
+
+
+/* Chrome, Safari, Opera */
+
+
+/* 
+@-webkit-keyframes mymove {
+    50% {
+        -webkit-transform: rotate(180deg);
+    }
+} */
+
+
+/* Standard syntax */
+
+
+/* 
+@keyframes mymove {
+    50% {
+        transform: rotate(180deg);
+    }
+} */

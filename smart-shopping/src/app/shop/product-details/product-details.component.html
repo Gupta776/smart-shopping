@@ -1,0 +1,39 @@
+<!-- <div class="card">
+    <img class="card-img-top" src="{{item.image}}" alt="product image not loaded">
+    <div class="card-body row">
+        <div class="col-12">
+            <h5>{{item.productName}}</h5>
+        </div>
+        <div class="col-12  text-danger">{{item.ratePerQuantity | currency:"INR"}}</div>
+       
+    </div>
+</div> -->
+
+<!-- <div class="card" *ngIf="userType!='A'">
+     -->
+<div class="card">
+    <div class="flip-box">
+        <div class="flip-box-inner">
+            <div class="flip-box-front">
+                <img class="card-img-top" src="{{item.image}}" alt="product image not loaded">
+            </div>
+            <div class="flip-box-back" *ngIf="userType=='U' || userType==NULL">
+                <p class="head">{{item.productName}}</p>
+                <p class="cost">{{item.ratePerQuantity | currency:"INR"}}</p>
+                <p class="location">Aisle: {{item.aisle}}</p>
+                <p class="location">Shelf: {{item.shelf}}</p>
+                <h4></h4>
+            </div>
+            <div class="flip-box-back" *ngIf="userType =='A' || userType=='O' ">
+                <p class="head">{{item.productName}}</p>
+                <!-- <p>{{item.productCode}}</p> -->
+                <!-- <p>{{item.ratePerQuantity | currency:"INR"}}</p>
+                    <h4>Aisle: {{item.aisle}}</h4>
+                    <h4>Shelf: {{item.shelf}}</h4>
+                    <h4></h4> -->
+                <button type="submit" (click)="editProduct(item.id)" class="button-creation">edit</button>
+                <button type="submit" (click)="deleteProduct(item.id)" class="button-creation">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<header class="container-fluid">
+    <nav class="navbar navbar-light navbar-expand-lg text-white">
+
+        <i class="material-icons align-middle text-success logo1">eco</i>
+        <h2 class="mr-auto text-dark p-1">Just<span class="fourStyle">4</span>U</h2>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#items-collapse" aria-controls="items-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon "></span>
+        </button>
+        <div class="collapse navbar-collapse" id="items-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item p-2">
+                    <li class="nav-item p-2" *ngIf='getUserType()!="A" && getUserType()!="O" '><a routerLink="./shoppingView" routerLinkActive="active-link">Home</a></li>
+                    <li class="nav-item p-2" *ngIf='getUserType()=="A" || getUserType()=="O" '><a routerLink="./adminMainView" routerLinkActive="active-link">Home</a></li>
+                    <li class="nav-item p-2" *ngIf="getUserType()=='U' "><a routerLink="./purchaseHistory" routerLinkActive="active-link">Purchase History</a></li>
+                    <li class="nav-item p-2" *ngIf="getUserType()=='O' "><a routerLink="./requestPage" routerLinkActive="active-link">Request Page</a></li>
+                    <li class="nav-item p-2" *ngIf='getUserType()=="A" || getUserType()=="O" '><a routerLink="./addProduct" routerLinkActive="active-link">Add Product</a></li>
+                    <li class="nav-item p-2 text-danger h2" *ngIf='getName() != null'><i class="material-icons icon-size align-middle">person</i><span class="name">{{getName()}}</span></li>
+                    <li class="nav-item p-2" *ngIf='getName() == null'><a routerLink="/login" routerLinkActive="active-link">Login</a></li>
+                    <li class="nav-item p-2" *ngIf='getName() == null '><a routerLink="/signup" routerLinkActive="active-link">Signup</a></li>
+                    <li class="nav-item p-2" *ngIf='getName() != null'>
+                        <a routerLink="" routerLinkActive="active-link" (click)='logout()'>Logout</a>
+                    </li>
+            </ul>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,175 @@
+<section class="">
+
+    <section class="row justify-content-center">
+        <form class="form-container" [formGroup]='editProductForm'>
+            <h4>Edit Product Detail.</h4>
+            <!-- <div *ngIf='userExistFlag == false' class="border border-danger rounded p-2">
+                        <small>
+                        user already exist enter new credentials
+                    </small></div> -->
+
+
+            <div class="row">
+
+                <div class="col-lg-4 col-xl-4 col-md-6 col-sm-12">
+                    <label for="productName">Product Name <span class="text-danger">*</span></label>
+                    <input type="text" [ngClass]="[(editProductForm.controls.productName.dirty ||editProductForm.controls.productName.touched) &&editProductForm.controls.productName.valid ? 'is-valid' : '',
+                                                (editProductForm.controls.productName.dirty ||editProductForm.controls.productName.touched) &&editProductForm.controls.productName.invalid ? 'is-invalid' : '', 
+                                                (editProductForm.controls.productName.valid ||editProductForm.controls.productName.invalid) ? 'form-control' : '']" id="productName" formControlName="productName" placeholder="Enter Product name">
+                    <div *ngIf="(!editProductForm.controls.productName.valid && (editProductForm.controls.productName.dirty || editProductForm.controls.productName.touched))">
+                        <div *ngIf=" editProductForm.controls.productName.errors.required">
+                            <small class='errorMessage'> Product Name is required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-4 col-md-6 col-sm-12">
+                    <label for="productType">Product Type <span class="text-danger">*</span></label>
+                    <input type="text" [ngClass]="[(editProductForm.controls.productType.dirty ||editProductForm.controls.productType.touched) &&editProductForm.controls.productType.valid ? 'is-valid' : '',
+                                (editProductForm.controls.productType.dirty ||editProductForm.controls.productType.touched) &&editProductForm.controls.productType.invalid ? 'is-invalid' : '', 
+                                (editProductForm.controls.productType.valid ||editProductForm.controls.productType.invalid) ? 'form-control' : '']" id="productType" formControlName="productType" placeholder="Enter product Type">
+                    <div *ngIf="(!editProductForm.controls.productType.valid && (editProductForm.controls.productType.dirty || editProductForm.controls.productType.touched))">
+                        <div *ngIf=" editProductForm.controls.productType.errors.required">
+                            <small class='errorMessage'> Product Name is required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-4 col-md-6 col-sm-12">
+                    <label for="brand">Product Brand <span class="text-danger">*</span></label>
+                    <input type="text" [ngClass]="[(editProductForm.controls.brand.dirty ||editProductForm.controls.brand.touched) &&editProductForm.controls.brand.valid ? 'is-valid' : '',
+                                                    (editProductForm.controls.brand.dirty ||editProductForm.controls.brand.touched) &&editProductForm.controls.brand.invalid ? 'is-invalid' : '', 
+                                                    (editProductForm.controls.brand.valid ||editProductForm.controls.brand.invalid) ? 'form-control' : '']" id="brand" formControlName="brand" placeholder="Enter Product Brand">
+                    <div *ngIf="(!editProductForm.controls.brand.valid && (editProductForm.controls.brand.dirty || editProductForm.controls.brand.touched))">
+                        <div *ngIf=" editProductForm.controls.brand.errors.required">
+                            <small class='errorMessage'> Product Brand is required</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-lg-3 col-xl-3 col-md-6 col-sm-12">
+                    <label for="quantityType">Product quantityType <span class="text-danger">*</span></label>
+                    <select type="text" [ngClass]="[(editProductForm.controls.quantityType.dirty ||editProductForm.controls.quantityType.touched) &&editProductForm.controls.quantityType.valid ? 'is-valid' : '',
+                                (editProductForm.controls.quantityType.dirty ||editProductForm.controls.quantityType.touched) &&editProductForm.controls.quantityType.invalid ? 'is-invalid' : '', 
+                                (editProductForm.controls.quantityType.valid ||editProductForm.controls.quantityType.invalid) ? 'form-control' : '']" id="qualityType" formControlName="quantityType" placeholder="Enter product quantityType">
+                            <option value="1">1-numbers</option>
+                            <option value="2">2-packets</option>
+                            <option value="3">3-kg's</option>
+                    </select>
+                    <div *ngIf="(!editProductForm.controls.quantityType.valid && (editProductForm.controls.quantityType.dirty || editProductForm.controls.quantityType.touched))">
+                        <div *ngIf=" editProductForm.controls.quantityType.errors.required">
+                            <small class='errorMessage'> Product quantityType is required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xl-3 col-md-6 col-sm-12">
+                    <label for="rate_per_quantity">Product ratePerQuantity <span class="text-danger">*</span></label>
+                    <input type="text" [ngClass]="[(editProductForm.controls.ratePerQuantity.dirty ||editProductForm.controls.ratePerQuantity.touched) &&editProductForm.controls.ratePerQuantity.valid ? 'is-valid' : '',
+                                                    (editProductForm.controls.ratePerQuantity.dirty ||editProductForm.controls.ratePerQuantity.touched) &&editProductForm.controls.ratePerQuantity.invalid ? 'is-invalid' : '', 
+                                                    (editProductForm.controls.ratePerQuantity.valid ||editProductForm.controls.ratePerQuantity.invalid) ? 'form-control' : '']" id="rate_per_quantity" formControlName="ratePerQuantity" placeholder="Enter Product Price">
+                    <div *ngIf="(!editProductForm.controls.ratePerQuantity.valid && (editProductForm.controls.ratePerQuantity.dirty || editProductForm.controls.ratePerQuantity.touched))">
+                        <div *ngIf=" editProductForm.controls.ratePerQuantity.errors.required">
+                            <small class='errorMessage'> Product ratePerQuantity is required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xl-3 col-md-6 col-sm-12">
+                    <label for="stockCount">Product stockCount <span class="text-danger">*</span></label>
+                    <input type="text" [ngClass]="[(editProductForm.controls.stockCount.dirty ||editProductForm.controls.stockCount.touched) &&editProductForm.controls.stockCount.valid ? 'is-valid' : '',
+                                    (editProductForm.controls.stockCount.dirty ||editProductForm.controls.stockCount.touched) && editProductForm.controls.stockCount.invalid ? 'is-invalid' : '', 
+                                    (editProductForm.controls.stockCount.valid ||editProductForm.controls.stockCount.invalid) ? 'form-control' : '']" id="stockCount" formControlName="stockCount" placeholder="Enter product stockCount">
+                    <div *ngIf="(!editProductForm.controls.stockCount.valid && (editProductForm.controls.stockCount.dirty || editProductForm.controls.stockCount.touched))">
+                        <div *ngIf=" editProductForm.controls.stockCount.errors.required">
+                            <small class='errorMessage'> Product stockCount is required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xl-3 col-md-6 col-sm-12">
+                    <label for="addDate">Product addDate <span class="text-danger">*</span></label>
+                    <input type="text" [ngClass]="[(editProductForm.controls.addDate.dirty ||editProductForm.controls.addDate.touched) &&editProductForm.controls.addDate.valid ? 'is-valid' : '',
+                                                        (editProductForm.controls.addDate.dirty ||editProductForm.controls.addDate.touched) &&editProductForm.controls.addDate.invalid ? 'is-invalid' : '', 
+                                                        (editProductForm.controls.addDate.valid ||editProductForm.controls.addDate.invalid) ? 'form-control' : '']" id="addDate" formControlName="addDate" placeholder="Enter Product addDate" bsDatepicker
+                        placeholder="MM/dd/yyyy">
+                    <div *ngIf="(!editProductForm.controls.addDate.valid && (editProductForm.controls.addDate.dirty || editProductForm.controls.addDate.touched))">
+                        <div *ngIf=" editProductForm.controls.addDate.errors.required">
+                            <small class='errorMessage'> Product addDate is required</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-lg-3 col-xl-3 col-md-6 col-sm-12">
+                    <label for="aisle">Product aisle <span class="text-danger">*</span></label>
+                    <input type="text" [ngClass]="[(editProductForm.controls.aisle.dirty ||editProductForm.controls.aisle.touched) &&editProductForm.controls.aisle.valid ? 'is-valid' : '',
+                                    (editProductForm.controls.aisle.dirty ||editProductForm.controls.aisle.touched) &&editProductForm.controls.aisle.invalid ? 'is-invalid' : '', 
+                                    (editProductForm.controls.aisle.valid ||editProductForm.controls.aisle.invalid) ? 'form-control' : '']" id="aisle" formControlName="aisle" placeholder="Enter product aisle">
+                    <div *ngIf="(!editProductForm.controls.aisle.valid && (editProductForm.controls.aisle.dirty || editProductForm.controls.aisle.touched))">
+                        <div *ngIf=" editProductForm.controls.aisle.errors.required">
+                            <small class='errorMessage'> Product Name is required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xl-3 col-md-6 col-sm-12">
+                    <label for="shelf">Product shelf <span class="text-danger">*</span></label>
+                    <input type="text" [ngClass]="[(editProductForm.controls.shelf.dirty ||editProductForm.controls.shelf.touched) &&editProductForm.controls.shelf.valid ? 'is-valid' : '',
+                                                        (editProductForm.controls.shelf.dirty ||editProductForm.controls.shelf.touched) &&editProductForm.controls.shelf.invalid ? 'is-invalid' : '', 
+                                                        (editProductForm.controls.shelf.valid ||editProductForm.controls.shelf.invalid) ? 'form-control' : '']" id="shelf" formControlName="shelf" placeholder="Enter Product shelf">
+                    <div *ngIf="(!editProductForm.controls.shelf.valid && (editProductForm.controls.shelf.dirty || editProductForm.controls.shelf.touched))">
+                        <div *ngIf=" editProductForm.controls.shelf.errors.required">
+                            <small class='errorMessage'> Product Name is required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xl-3 col-md-6 col-sm-12">
+                    <label for="dateOfManufacture">Date Of Manufacture <span class="text-danger">*</span></label>
+                    <input type="text" [ngClass]="[(editProductForm.controls.dateOfManufacture.dirty ||editProductForm.controls.dateOfManufacture.touched) &&editProductForm.controls.dateOfManufacture.valid ? 'is-valid' : '',
+                                        (editProductForm.controls.dateOfManufacture.dirty ||editProductForm.controls.dateOfManufacture.touched) &&editProductForm.controls.dateOfManufacture.invalid ? 'is-invalid' : '', 
+                                        (editProductForm.controls.dateOfManufacture.valid ||editProductForm.controls.dateOfManufacture.invalid) ? 'form-control' : '']" id="dateOfManufacture" formControlName="dateOfManufacture" placeholder="Enter product Code"
+                        bsDatepicker placeholder="MM/dd/yyyy">
+                    <div *ngIf="(!editProductForm.controls.dateOfManufacture.valid && (editProductForm.controls.dateOfManufacture.dirty || editProductForm.controls.dateOfManufacture.touched))">
+                        <div *ngIf=" editProductForm.controls.dateOfManufacture.errors.required">
+                            <small class='errorMessage'> Product Name is required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xl-3 col-md-6 col-sm-12">
+                    <label for="dateOfExpiry">Date Of Expiry <span class="text-danger">*</span></label>
+                    <input type="text" [ngClass]="[(editProductForm.controls.dateOfExpiry.dirty ||editProductForm.controls.dateOfExpiry.touched) &&editProductForm.controls.dateOfExpiry.valid ? 'is-valid' : '',
+                                                            (editProductForm.controls.dateOfExpiry.dirty ||editProductForm.controls.dateOfExpiry.touched) &&editProductForm.controls.dateOfExpiry.invalid ? 'is-invalid' : '', 
+                                                            (editProductForm.controls.dateOfExpiry.valid ||editProductForm.controls.dateOfExpiry.invalid) ? 'form-control' : '']" id="dateOfExpiry" formControlName="dateOfExpiry" placeholder="Enter Product name"
+                        bsDatepicker placeholder="MM/dd/yyyy">
+                    <div *ngIf="(!editProductForm.controls.dateOfExpiry.valid && (editProductForm.controls.dateOfExpiry.dirty || editProductForm.controls.dateOfExpiry.touched))">
+                        <div *ngIf=" editProductForm.controls.dateOfExpiry.errors.required">
+                            <small class='errorMessage'> Product Name is required</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <label for="image"> Image url<span class="text-danger">*</span></label>
+                    <input type="text" [ngClass]="[(editProductForm.controls.image.dirty ||editProductForm.controls.image.touched) &&editProductForm.controls.image.valid ? 'is-valid' : '',
+                                                                (editProductForm.controls.image.dirty ||editProductForm.controls.image.touched) &&editProductForm.controls.image.invalid ? 'is-invalid' : '', 
+                                                                (editProductForm.controls.image.valid ||editProductForm.controls.image.invalid) ? 'form-control' : '']" id="image" formControlName="image" placeholder="Enter image url">
+                    <div *ngIf="(!editProductForm.controls.image.valid && (editProductForm.controls.image.dirty || editProductForm.controls.image.touched))">
+                        <div *ngIf=" editProductForm.controls.image.errors.required">
+                            <small class='errorMessage'> Product Name is required</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 ">
+                    <button type="button" (click)='onSubmit()' [disabled]='!editProductForm.valid' class="btn btn-signup-color mt-3 text-white">Save</button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</section>

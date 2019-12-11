@@ -1,0 +1,38 @@
+<div class="container text-alignment p-5">
+    <div class="alert bg-danger alert-box-requirement text-white  mr-5">
+        Pending Shop Manager Requests!
+    </div>
+    <!-- <div class="pending-request mr-5">
+        <table class="table table-hover table-align-center"> -->
+    <div class=" mr-5">
+        <table class="table table-align-center ">
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>First Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>ContactNumber</th>
+                    <th>Pending List</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let property of adminList">
+                    <td>{{property.userName}}</td>
+                    <td>{{property.firstName}}</td>
+                    <td>{{property.age}}</td>
+                    <td>{{property.gender}}</td>
+                    <td>{{property.contactNumber}}</td>
+                    <td><button type="submit" class="text-success" (click)='approve(property)'>Approve</button></td>
+                    <td><button type="submit" class="text-danger" (click)='decline(property)'>Decline</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- <ng-template #elseBlock>
+                    <div class="alert alert-success mt-5">
+                        There are no Requirements Now 
+                    </div>
+                </ng-template> -->
+    </div>
+</div>
