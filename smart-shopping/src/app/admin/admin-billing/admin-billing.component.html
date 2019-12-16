@@ -38,6 +38,7 @@
                     </div>
                     <div class="row ">
                         <select #productCode class="form-control" formControlName="item">
+                               
                             <option *ngFor="let item of productList" value="{{item.id}}">{{item.productName}}</option>
                         </select>
                     </div>
@@ -109,13 +110,13 @@
                     <th>{{totalAmount}}</th>
                 </thead>
                 <thead>
-                    <th>Reward points</th>
+                    <th>Reward points of the user</th>
                     <th>{{finalRewardPoints}}</th>
                 </thead>
                 <thead>
                     <th>Apply Reward Points</th>
                     <th><button (click)="checkBoxApply()">Apply</button></th>
-                    <th> <button (click)="checkBoxCancle()">Cancle</button></th>
+                    <th> <button (click)="checkBoxCancle()">Cancel</button></th>
                     <th><strong>{{detailsOfRewardApllied}}</strong></th>
                 </thead>
 

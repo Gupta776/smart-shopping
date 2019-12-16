@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.csrf().disable().httpBasic().and()
         .authorizeRequests()
         .antMatchers("/smart-shopping").anonymous()
-        .antMatchers("/smart-shopping").permitAll()
+        .antMatchers("/smart-shopping/users").permitAll()
         .antMatchers("/smart-shopping/users/contact-number/{contactNumber}").permitAll()
         .anyRequest().authenticated()
         .and()

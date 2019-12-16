@@ -43,16 +43,6 @@ public class BillController {
 	public  List<Bill> getBillByBillId(@PathVariable String userName) {
 		return billService.getBillByBillId(userName);
 	}
-	 
-//
-//	@GetMapping("/users/customers")
-//	public List<Users> getAllCustomers() {
-//		return userService.getAllCustomers();
-//	}
-//	
-//	@GetMapping("/user-bills/{userId}")
-//	public List<Bill> getUserBills(@PathVariable int userId){
-//		return billService.getUserBills(userId);
-//	}
+	
 	
 }

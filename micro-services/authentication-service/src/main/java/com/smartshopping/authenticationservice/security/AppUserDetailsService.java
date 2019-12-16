@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.smartshopping.authenticationservice.controller.UserController;
+import com.smartshopping.authenticationservice.exception.UserAlreadyExistException;
 import com.smartshopping.authenticationservice.model.Users;
 import com.smartshopping.authenticationservice.repository.UsersRepository;
 
@@ -32,7 +33,6 @@ public class AppUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Users user = usersRepository.findByUserName(username);
 		LOGGER.debug("ASD" + user);
-//		System.out.println(user);
 		if (user == null) {
 			System.out.println("1" + user);
 			LOGGER.debug("user is null - loadbyusername");
@@ -42,7 +42,6 @@ public class AppUserDetailsService implements UserDetailsService {
 			System.out.println("LL" + new AppUser(user));
 			return new AppUser(user);
 		}
-//		LOGGER.debug("return");
 
 	}
 
@@ -52,13 +51,14 @@ public class AppUserDetailsService implements UserDetailsService {
 	}
 
 	@Transactional
-	public void signup(Users user) {
+	public void signup(Users user) throws UserAlreadyExistException  {
 		//boolean flag = false;
 		
 		System.out.println("data bse serach in appuserderails");
 		System.out.println(usersRepository.findByUserName(user.getUserName()));
 		if (usersRepository.findByUserName(user.getUserName()) != null) {
 			//flag = false;
+			throw new UserAlreadyExistException();
 		} else {
 			//flag = true;
 			// Set<Role> role = new HashSet();

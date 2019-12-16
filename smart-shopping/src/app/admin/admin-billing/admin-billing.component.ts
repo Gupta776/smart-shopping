@@ -121,7 +121,7 @@ export class AdminBillingComponent implements OnInit {
       if (this.totalAmount > this.finalRewardPoints) {
         console.log("greater than");
         this.originalAmount = this.totalAmount - this.finalRewardPoints;
-        this.rewardFinal =  this.originalAmount * (0.01);
+        this.rewardFinal =  this.originalAmount / (100);
 
       } else {
         console.log("less than");
@@ -131,7 +131,7 @@ export class AdminBillingComponent implements OnInit {
       for (let i = 0; i < this.productDetailsList.length; i++) {
         this.finalBillDetail.push({ id: this.productDetailsList[i].id, quantity: this.productDetailsList[i].quantity });
 
-        for (let i = 0; i < this.productDetailsList.length; i++) {
+        //for (let i = 0; i < this.productDetailsList.length; i++) {
           // console.log("1");
           //here i ahave to calculate the price of the amount of all the productsand apply offer
           console.log("offerList after reward");
@@ -156,25 +156,25 @@ export class AdminBillingComponent implements OnInit {
           } else {
             this.productFlag = false;
           }
-        }
+      //  }
         //end ----------
       }
       var dateParts = billForm.value.purchaseDate.split("/");
       var dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
 
       this.finalAmount = this.originalAmount;
-
+      var intvalue = Math.round( this.rewardPoints);
+      console.log("jgfdsagjgkdfsa");
+      console.log(intvalue);
       this.finalBill = {
         userId: billForm.value.userId,
         totalAmount: this.totalAmount,
         originalAmount: this.originalAmount,
         finalRewardPoints: this.rewardFinal,
         productList: this.finalBillDetail,
-        rewardPoints: this.originalAmount * (0.01),
+        rewardPoints: this.originalAmount  /(100),
         purchaseDate: dateObject
       }
-
-
       console.log(this.finalBill);
       this.billService.generateBill(this.finalBill).subscribe((response) => {
         this.isBillGenerated = true;
@@ -185,7 +185,11 @@ export class AdminBillingComponent implements OnInit {
       }
       var dateParts = billForm.value.purchaseDate.split("/");
       var dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
-      this.rewardPoints = this.totalAmount * (0.01);
+      this.rewardPoints = (this.totalAmount / (100));
+      var intvalue = Math.round( this.rewardPoints);
+      console.log("jgfdsagjgkdfsa");
+      console.log(this.rewardPoints);
+      console.log(intvalue);
       console.log(this.finalRewardPoints);
       this.finalRewardPoints = this.finalRewardPoints + this.rewardPoints;
       console.log(this.finalRewardPoints);
@@ -211,7 +215,7 @@ export class AdminBillingComponent implements OnInit {
     // this.totalAmount = 0;
     // this.finalRewardPoints=[];
 
-
+   // this.router.navigate(['./adminMainView']);
   }
 
 
@@ -229,10 +233,12 @@ export class AdminBillingComponent implements OnInit {
     this.productDetailsList.splice(index, 1);
   }
   onDropBill() {
-    this.productDetailsList = [];
+    this.productDetailsList = null;
     this.totalAmount = 0;
     this.finalRewardPoints = [];
-    // this.router.navigate(['./adminMainView']);
+   this.detailsOfRewardApllied=null;
+  //  //this.ngOnInit();
+    this.router.navigate(['./adminMainView']);
   }
   checkBoxApply() {
     this.rewardCheckBox = 1;
@@ -241,7 +247,7 @@ export class AdminBillingComponent implements OnInit {
   }
   checkBoxCancle() {
     this.rewardCheckBox = 0;
-    this.detailsOfRewardApllied = "Cancled";
+    this.detailsOfRewardApllied = "Cancelled";
     console.log(this.rewardCheckBox);
   }
 }

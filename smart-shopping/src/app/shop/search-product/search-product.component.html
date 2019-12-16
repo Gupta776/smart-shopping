@@ -1,10 +1,10 @@
 <div class="container-fluid">
     <section class="jumbotron">
         <div class="row">
-            <h1 class="text-success">Find Product </h1>
+            <h1 class="text-primary ">Find Product </h1>
             <div class="input-group md-form form-sm form-1 pl-0">
                 <div class="input-group-prepend">
-                    <span class="input-group-text purple lighten-3" id="basic-text1"><i class="material-icons align-middle">local_cafe</i> </span>
+                    <span class="input-group-text purple lighten-3" id="basic-text1"><i class="material-icons align-middle">search</i> </span>
                 </div>
                 <input class="form-control my-0 py-1" type="text" placeholder="Search" [(ngModel)]="searchData" (keyup)="filterData()" aria-label="Search">
             </div>
@@ -21,7 +21,7 @@
                 </select>
 
             </div>
-            <button class="btn btn-success form-inline" (click)="sort()" type='button'>Sort</button>
+            <button class="btn btn-primary form-inline" (click)="sort()" type='button'>Sort</button>
         </div>
     </section>
 </div>

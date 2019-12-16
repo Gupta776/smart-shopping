@@ -35,22 +35,19 @@ public class AuthenticationController {
 		LOGGER.info("start");
 		LOGGER.debug(authHeader);
 		Map<String, String> data = new HashMap<>();
-		//String role = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toArray()[0].toString();
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userName = authentication.getName();
 		UserDetails userDetails = appUserDetailsService.loadUserByUsername(userName);
-		System.out.println(userName);
 		String userType=SecurityContextHolder.getContext().getAuthentication().getAuthorities().toArray()[0].toString();
 		String status =SecurityContextHolder.getContext().getAuthentication().getAuthorities().toArray()[1].toString();
 		String firstName=SecurityContextHolder.getContext().getAuthentication().getAuthorities().toArray()[2].toString();
-		System.out.println(userType);
 		data.put("token", generateJwt(getUser(authHeader)));
 		data.put("userName", userName);
 		data.put("userType", userType);
 		data.put("status",status );
 		data.put("firstName", firstName);
 		LOGGER.info("End");
-		LOGGER.debug("sad"+data);
+		LOGGER.debug("authentication --"+data);
 		return data;
 	}
 
